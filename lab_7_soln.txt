@@ -1,0 +1,47 @@
+https://powcoder.com
+代写代考加微信 powcoder
+Assignment Project Exam Help
+Add WeChat powcoder
+https://powcoder.com
+代写代考加微信 powcoder
+Assignment Project Exam Help
+Add WeChat powcoder
+-- COMP9311 18s1 Lab 09 ... query performance analysis
+
+
+-- Q1
+
+explain analyze
+select distinct s.sid
+from   CourseEnrolments e, Students s
+where  e.student=s.id and e.mark > 97;
+                                                              QUERY PLAN                                                               
+---------------------------------------------------------------------------------------------------------------------------------------
+Omitted 
+
+
+-- Q2
+
+explain
+select s.code::text,s.name,t.year,t.sess::text,e.mark,e.grade::text,s.uoc
+from   Subjects s, Courses c, Terms t, CourseEnrolments e, Students st
+where  st.sid=2176435  and e.student = st.id and e.course = c.id
+and c.subject = s.id and c.term = t.id
+order by t.id,s.code;
+                                                      QUERY PLAN                                                      
+----------------------------------------------------------------------------------------------------------------------
+Omitted 
+
+
+
+-- Q3
+
+explain
+select p.name
+from   People p, CourseEnrolments e, Courses c, Subjects s, Terms t
+where  p.id = e.student and e.course = c.id and c.subject = s.id
+and c.term = t.id and s.code like 'COMP%' and t.year = 2002;
+
+                                        QUERY PLAN                                         
+-------------------------------------------------------------------------------------------
+Omitted 
